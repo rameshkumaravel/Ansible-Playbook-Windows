@@ -1,0 +1,14 @@
+---
+- hosts: all
+  gather_facts: yes
+  tasks:
+  - name: Install windows defender features
+    win_feature:
+      name: Windows-Defender-Features
+      state: present
+      include_sub_features: yes
+      include_management_tools: yes
+    register: win_feature
+  - name: Reboot if necessary
+    win_reboot:
+    when: win_feature.reboot_required
