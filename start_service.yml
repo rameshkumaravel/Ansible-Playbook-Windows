@@ -1,0 +1,25 @@
+---
+- name: Start windows service
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Start windows update service with auto mode
+      win_service:
+        name: wuauserv
+        start_mode: auto
+        state: started
+        
+    - name: CSV - Generate output filename
+      set_fact: date="{{lookup('pipe','date +%Y%m%d')}}"
+      run_once: true
+
+    - name: CSV - Create file and set the header
+      lineinfile:
+        dest: "{{ \\WIN2\\Dell }}/{{ filename }}"
+        line:
+          name,start_mode
+        create: yes
+        state: present
+
+      
+      
