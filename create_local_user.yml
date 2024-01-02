@@ -1,0 +1,9 @@
+---
+- name: Local user
+  hosts: all
+  tasks:
+    - name: Create local user
+      win_user:
+        name: william
+        password: P@ssw0rd
+        state: present

@@ -1,0 +1,13 @@
+---
+- name: Create local groups using loop
+  hosts: all
+  tasks:
+    - name: Create local groups
+      win_group:
+        name: "{{ item.name }}"
+        state: present
+      loop:
+        - { name: "gcp" }
+        - { name: "oneplus" }
+        
+        

@@ -1,0 +1,7 @@
+---
+- name: Ping test
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Start ping test
+      win_ping:

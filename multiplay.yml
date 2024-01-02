@@ -1,0 +1,18 @@
+---
+- name: Multiplay (User creation & Service start & Reboot server)
+  hosts: all
+  tasks:
+    - name: Create local user
+      win_user: 
+        name: aaradhana
+        password: Welcomeabn@2025
+        state: present
+        
+    - name: start windows update service
+      win_service:
+        name: wuauserv
+        start_mode: auto
+        state: started
+
+    - name: Reboot the server
+      win_reboot:

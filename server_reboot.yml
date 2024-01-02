@@ -1,0 +1,10 @@
+---
+- name: Server reboot
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Initiate Server reboot
+      win_reboot:
+        pre_reboot_delay_sec: 10
+        post_reboot_delay_sec: 15
+        msg: "Reboot initiated by Ansible team"

@@ -1,0 +1,13 @@
+---
+- name: Stop service using "{{ item }}"
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Stop multiple services using "{{ item }}"
+      win_service:
+        name: "{{ item }}"
+        start_mode: disabled
+        state: stopped
+      loop:
+        - wuauserv
+        - W32Time

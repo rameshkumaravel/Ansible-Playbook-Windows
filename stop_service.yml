@@ -1,0 +1,12 @@
+---
+- name: Stop windows service
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Stop windows update service and disable it.
+      win_service:
+        name: wuauserv
+        start_mode: disabled
+        state: stopped
+        
+        

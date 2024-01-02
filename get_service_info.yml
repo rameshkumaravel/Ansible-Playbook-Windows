@@ -1,0 +1,9 @@
+---
+- name: Get service info
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Get the Dhcp service informations
+      win_service:
+        name: Dhcp
+      

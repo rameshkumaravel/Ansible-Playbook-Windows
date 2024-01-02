@@ -1,0 +1,9 @@
+---
+- name: Gather facts
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Fetch gather facts of 'interfaces'
+      debug: 
+        var: ansible_facts['interfaces']
+  

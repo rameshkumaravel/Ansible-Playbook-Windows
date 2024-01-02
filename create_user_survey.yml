@@ -1,0 +1,9 @@
+---
+- name: Create local user using survey
+  hosts: all
+  tasks:
+    - name: Create local user
+      win_user: 
+        name: "{{ user_name }}"
+        password: "{{ password }}"
+        state: present

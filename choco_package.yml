@@ -1,0 +1,20 @@
+---
+- name: Install Package
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Chocolatey is install
+      win_chocolatey:
+        name: Chocolatey
+        state: present
+
+    - name: Install adobe-connect
+      win_chocolatey:
+        name: adobe-connect
+        state: present
+        pinned: true
+      register: install_result
+
+    - name: Server is rebooted
+      win_reboot:
+      when: install_result.changed and install_result.rc == 3010

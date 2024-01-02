@@ -1,0 +1,9 @@
+---
+- name: Remove user
+  hosts: all
+  tasks:
+    - name: Remove local user
+      win_user:
+        name: william
+        password: P@ssw0rd
+        state: absent

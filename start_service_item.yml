@@ -1,0 +1,17 @@
+---
+- name: Start service using "{{ item }}"
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Start multiple services using "{{ item }}"
+      win_service:
+        name: "{{ item }}"
+        start_mode: auto
+        state: started
+      loop:
+        - wuauserv
+        - W32Time
+      register: loop_service
+    - name: Display output
+      debug:
+        var: loop_service
